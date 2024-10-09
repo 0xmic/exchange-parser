@@ -1,7 +1,6 @@
 import json
 import requests
 import exchange
-import bittrex
 import kraken
 import coinbase
 import gemini
@@ -10,11 +9,7 @@ import crypto_com
 
 assets = {}
 exchanges_to_search = ()
-all_exchanges = ('bittrex','bittrexglobal','coinbase','gemini','kraken','binanceus','cryptodotcom')
-
-# Retrieve Bittrex Data
-bittrex_data = bittrex.getMarketData()
-assets = bittrex.setAssets(assets, bittrex_data)
+all_exchanges = ('coinbase','gemini','kraken','binanceus','cryptodotcom')
 
 # Retrieve Kraken Data
 kraken_data = kraken.getMarketData()
