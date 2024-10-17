@@ -6,10 +6,11 @@ import coinbase
 import gemini
 import binance_us
 import crypto_com
+import bitget
 
 assets = {}
 exchanges_to_search = ()
-all_exchanges = ('coinbase','gemini','kraken','binanceus','cryptodotcom')
+all_exchanges = ('coinbase', 'gemini', 'kraken', 'binanceus', 'cryptodotcom', 'bitget')
 
 # Retrieve Kraken Data
 kraken_data = kraken.getMarketData()
@@ -31,15 +32,22 @@ assets = binance_us.setAssets(assets, binanceus_data)
 crypto_com_data = crypto_com.getMarketData()
 assets = crypto_com.setAssets(assets, crypto_com_data)
 
-with open('/Users/longoria/Downloads/exchanges.csv', 'w') as writer:
-    for coin in sorted(assets.keys()):
-        line = coin
-        for key in all_exchanges:
-            if key in assets[coin]:
-                line = line+","+key
-            else:
-                line = line+","
+# Retrieve BitGet Data
+bitget_data = bitget.getMarketData()
+assets = bitget.setAssets(assets, bitget_data)
 
-        print (line)
-        writer.write(line+'\n')
-    writer.close()
+# Write results to CSV file
+with open('/Users/longoria/Downloads/exchanges.csv', 'w') as writer:
+    # Writing the header row
+    writer.write("asset,coinbase,gemini,kraken,binanceus,cryptodotcom,bitget\n")
+
+    for coin in sorted(assets.keys()):
+        if coin:  # This check removes empty asset names (e.g., blank row)
+            line = coin
+            for key in all_exchanges:
+                if key in assets[coin]:
+                    line = line + "," + key
+                else:
+                    line = line + ","
+            print(line)
+            writer.write(line + '\n')

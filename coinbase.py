@@ -10,4 +10,4 @@ def setAssets(assets, data):
             assets[item['id']]["coinbase"] = 1
         except KeyError:
             assets[item['id']] = {"coinbase": 1}
-    return (assets)
+    return assets
