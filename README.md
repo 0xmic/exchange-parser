@@ -2,8 +2,8 @@
 This script will parse the following cryptocurrency exchange APIs and export currently listed assets into a CSV file. 
 
 Exchanges:
-* Bittrex
-* Bittrex Global
+* Binance US
+* Bitget
 * Coinbase
 * Crypto.com
 * Gemini
