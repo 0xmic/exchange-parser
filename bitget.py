@@ -2,7 +2,7 @@ import exchange
 
 def getMarketData():
     # Fetching all trading pairs data from BitGet
-    data = exchange.getJson("https://api.bitget.com/api/spot/v1/market/tickers")
+    data = exchange.getJson("https://api.bitget.com/api/v2/spot/market/tickers")
     return data
 
 def setAssets(assets, data):

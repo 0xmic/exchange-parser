@@ -5,7 +5,7 @@ import kraken
 import coinbase
 import gemini
 import binance_us
-import crypto_com
+# import crypto_com
 import bitget
 
 assets = {}
@@ -29,15 +29,15 @@ binanceus_data = binance_us.getMarketData()
 assets = binance_us.setAssets(assets, binanceus_data)
 
 # Retrieve Crypto.com Data
-crypto_com_data = crypto_com.getMarketData()
-assets = crypto_com.setAssets(assets, crypto_com_data)
+# crypto_com_data = crypto_com.getMarketData()
+# assets = crypto_com.setAssets(assets, crypto_com_data)
 
 # Retrieve BitGet Data
 bitget_data = bitget.getMarketData()
 assets = bitget.setAssets(assets, bitget_data)
 
 # Write results to CSV file
-with open('/Users/longoria/Downloads/exchanges.csv', 'w') as writer:
+with open('/Users/michaellongoria/Downloads/exchanges.csv', 'w') as writer:
     # Writing the header row
     writer.write("asset,coinbase,gemini,kraken,binanceus,cryptodotcom,bitget\n")
 
